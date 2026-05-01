@@ -1,0 +1,180 @@
+Name,Slot,Description,CD,Tags,Needs 3D Print,,,,,,,
+Slash,A,"Slash in a half circle with radius 2, dealing 6 physical damage.",1,"melee, physical, aoe",,,,A,E,Q,W,
+Stab,A,"Stab an enemy in range 1 for 1d12 physical damage, and apply 1d4 poison",1,"melee, physical, roll, assassin",,,fire,0,3,3,2,8
+Whirl,A,"Slash around you 1d4 times. Each slash has radius 1, increased by 0.5 each slash. Each slash deals 5 physical damage, reduced by 1 each slash.",1,"melee, physical, aoe, roll",,,lightning,0,2,7,1,10
+Longbow,A,Fire an arrow in a straight line with infinite range. This deals 7 physical damage.,1,"projectile, physical",,,terra,0,2,5,0,7
+Thwack,A,"Hit all tiles in a straight line in range 3, dealing 10 physical damage, reduced by 2 for each enemy hit.",1,"melee, physical",,,poison,0,2,2,1,5
+Crossbow,A,"Fire a heavy bolt in a straight line with infinite range. This deals 5 physical damage and pushes enemies back 2 tiles. If the enemy cannot be pushed back fully, they take an additional 3 physical damage.",1,"projectile, physical",,,ice,0,4,2,2,8
+Draw Your Sword,A,"Shoot in a straight line up to 4 tiles, dealing 4 physical damage. If there are any enemies in a half circle with radius 1 in that direction, instead slash that area for 8 physical damage.",1,"projectile, melee, physical, aoe",,,water,0,0,1,0,1
+Put Away Your Sword,A,Gain a unique +100% damage multiplier.,1,,,,wind,1,0,2,1,4
+Staff Strike,A,"Slash in a semicircle with radius 2, dealing 7 wind damage.",1,"wind, aoe, melee",,,stone,0,3,2,2,7
+Slice and Dice,E,"Dash diagonally up to 3 tiles, then slash, dealing 4 damage in radius 1. If this deals damage, you may dash in any cardinal direction up to 3 tiles.",1,"movement, melee, physical, aoe",,,physical,0,3,2,2,
+Shunpo,E,"Throw a dagger in any direction with infinite range. Dash to the spot right before the target hit, deal 3 damage, apply 3 poison, and mark them. The next physical damage against them gains +150% damage.",3,"movement, projectile, physical, mark, poison",1 mark,,necromancy,0,2,3,5,10
+Replay Replay,E,"Your next action occurs 1d4 times in a row, capped at 3.",2,"dark, roll",,,,,,,,
+Hailstorm,E,"Choose a tile in radius 4. 1d12 ice fragments fall onto that tile, each dealing 1 ice damage.",1,"projectile, ice",,,,,,,,
+Quickslip,E,Dash in any direction up to 5 tiles. Enemies passed through are dealt 2 ice damage.,2,"movement, ice",,,,,,,,
+Dark Effigy,E,"Innate - 5 max spirit, 2 spirit regeneration
+
+Summon (5) - Summon a dark effigy with 1d10 health anywhere on the board. This effigy repeats 50% of damage dealt to enemies as dark damage within radius 3. Max 1 dark effigy.",X,"necromancy, dark",1 effigy minion,,,,,,,
+Chasm,E,"Mark a tile anywhere on the board. Every time you use an action, the chasm releases a nova with radius 1, dealing 3 fire damage. Chasms count as summons and last indefinitely. Max 4 chasms.",3,"fire, aoe, mark",1 tile marker,,,,,,,
+Frost Wraith,E,"Summon up to 2 frost wraiths with 1d10 health around you. When you use an ability or attack, each frost wraith can move straight up to 2 tiles in any direction before slashing around themselves for 3 ice damage, reduced to 1 for repeat hits. Max 3 frost wraiths.",4,"ice, necromancy, roll, aoe",3 frost wraith minions,,,,,,,
+Vault,E,"Vault over entities in a straight line up to 6 tiles in any direction, shooting an arrow at each tile travelled, dealing 3 physical damage and applying 5 poison. There must be at least one enemy to vault over, and you must end on a tile.",3,"projectile, physical, movement, poison",,,,,,,,
+Mind Control,E,"Mark an enemy. If they are already marked with Mind Control, you may consume it to use one of their actions as them and then mark them again after. They are counted as an enemy, and you are counted as an ally. You do not gain any bonuses from your passives or modifiers.",2,"dark, mark",1 mark,,,,,,,
+Hell from Above,E,Rain fire on all tiles in diagonal directions. Enemies hit cause an explosion in radius 1 that deals 9 fire damage.,4,"fire, aoe, holy",,,,,,,,
+Divine Leap,E,"Leap to a tile in radius 3 occupied by an enemy. Displace that enemy onto a tile in radius 3, deal 2 ice damage, and increase their ability cooldowns by 1.",2,"movement, ice, holy",,,,,,,,
+Firebrand,E,"Cast your attack, fully converted to dark and fire damage. This attack deals double damage.",2,"fire, dark",,,,,,,,
+Heralding Thunder,E,"At the beginning of your turn, deal 1d6 lightning damage to all enemies in radius 3. Casting this ability marks an enemy in radius 3. The next lightning damage against them consumes it to deals 100% more damage.",2,"lightning, aoe, mark, roll",1 mark,,,,,,,
+Hyper,E,"While cooldown is at 0, your attack gains +2 range, +3 base damage, and you may attack one additional time. Upon taking 20% of your maximum health or more damage in a hit, put this ability on cooldown.",4,,,,,,,,,
+Starfall,E,Drop a star on 3 different tiles within radius 2. These stars deal 6 lightning damage in a circle of radius 1.,1,"lightning, aoe",,,,,,,,
+Justicar,E,"Dash in a cardinal direction 2 tiles, then thrust a holy spear in all diagonal directions with range 2, dealing 20% max health physical damage.",3,"melee, physical, holy, movement",,,,,,,,
+Regrowth,E,"Regenerate a defense token. If you cannot regenerate a defense token, regenerate 4 health.",1,"healing, stone",,,,,,,,
+Grow Wall,E,Place two walls in radius 3. Walls must be placed between two tiles in range.,1,stone,,,,,,,,
+Entrapment,E,"Toss a stone in any cardinal direction with range 3. Upon landing, three walls grow beside and behind that tile.",1,stone,,,,,,,,
+Flower Dash,E,"Grow plants on all corners of the tile you are currently on, dash 2 tiles in a straight line, and empower your next damage with terra. If this would already be counted as terra, it gains +100% terra damage. ",2,"terra, movement",,,,,,,,
+Overgrowth,E,Choose a tile in radius 3. Grow plants on all corners of all tiles cardinally adjacent.,2,terra,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+,E,,1,,,,,,,,,
+Move Premium,M,Move in any straight line up to 4 tiles.,1,movement,,,,,,,,
+Trample,M,Move in any straight line up to 2 tiles. All movement causes an explosion at the end of your path that deals 4 physical damage in radius 1.,1,"movement, aoe, physical",,,,,,,,
+Move Plus,M,Move to any tile in radius 3.,1,movement,,,,,,,,
+Ballista,M,Gain a unique +150% damage multiplier.,1,,,,,,,,,
+Rook,M,Move in any cardinal direction up to 7 tiles.,1,movement,,,,,,,,
+Bishop,M,Move in any diagonal direction up to 7 tiles.,1,movement,,,,,,,,
+Missile Barrage,Q,"Shoot a missile at all enemies within range 3, each dealing 3 damage. If there is only one enemy in range 3, fire two missiles at it instead.",2,"projectile, physical",,,,,,,,
+Elemental Barrage,Q,"Shoot 3 elemental arrows with infinite range. Each deals 2 damage, and counts as all elements.",1,"projectile, fire, lightning, terra, poison, ice, water, stone, wind",,,,,,,,
+Pet Raptor,Q,"Innate - 4 max spirit, 3 spirit regeneration
+
+Summon (4) - Summon a pet raptor with 1d20 health. Max 1 pet raptor.
+
+Leap 'n Swipe (2): The raptor leaps to any tile in radius 3, then strikes and marks an enemy in radius 1 for 1d12 physical damage. The next physical damage against this marked enemy consumes X spirit, up to 3, and deals Xd12 bonus physical damage.",X,"necromancy, roll, mark","1 raptor, 1 mark",,,,,,,
+Lightning Bolt,Q,"Fire a lightning bolt in any direction with infinite range, dealing 4 lightning damage, increased by 1 for each empty tile traveled. ",1,"projectile, lightning",,,,,,,,
+Charged Nova,Q,"This ability starts on cooldown. Do nothing. When this ability's cooldown is reduced to 0, place it on cooldown and release an elemental nova that applies 3 ignite in radius 3, then deals 6 damage. This damage counts as fire, lightning, and ice.",2,"fire, lightning, ice, aoe",,,,,,,,
+Fireball,Q,"Cast a fireball in any direction with infinite range, dealing a 6 fire damage explosion with radius 1 around the first enemy hit. Apply ignite to all enemies hit equal to the number of enemies hit.",1,"projectile, fire, aoe",,,,,,,,
+Smite,Q,"Choose a radius 1 around any tile on the board. Strike all tiles for 4 lightning damage X times, where X is the number of enemies in the radius.",1,"lightning, aoe, holy",,,,,,,,
+Quick Combo,Q,"Choose a cardinal direction. Slash in a 3x2 rectangle in front of you for 2 physical damage, pushing enemies hit straight back just past the rectangle, dash forward 2 tiles, then slash in a 3x1 rectangle in front of you for 4 physical damage. AOE and Dash increases are applied to the damage of this ability instead. ",2,"melee, physical, aoe, movement",,,,,,,,
+Hallowed Archers,Q,"Innate - 3 max spirit, 2 spirit regeneration
+
+Summon (2) - Summon an undamagable, untargetable archer that does not interrupt movement but does occupy a tile. When you use your move, you may move hallowed archers up to 1 tile. Max 2 hallowed archers.
+
+Shoot (1) - Each archer fires an arrow in any straight direction that deals 3 lightning damage in radius 1 around the first enemy hit.
+
+Hallow Arrows (3) - Each archer fires a hallow arrow at an enemy in radius 3. The first deals 4 lightning damage, and any successive hallow arrow that hits the same enemy deals 1 lightning damage per 10 health below 100.",X,"necromancy, lightning, holy, aoe, projectile",2 archer minions,,,,,,,
+Arc,Q,Fire an arc in perimeter around you in radius 3. This deals 5 lightning damage and gains twice the benefits from Magic-Lightning bonuses.,1,lightning,,,,,,,,
+Chomp,Q,Bite an enemy in range 1 for 6 physical damage with 50% lifesteal.,1,"physical, healing",,,,,,,,
+Big Bonk,Q,Deal 1d20 physical damage to an enemy in range 1. Advantage does not affect this card or any of its specific modifiers.,2,"physical, roll",,,,,,,,
+Hand of God,Q,Punch a tile in any cardinal direction in range 1 for 4 physical damage. Gain +25% lifesteal and +50% damage for every 10 hp below 50 they are.,1,"melee, physical, holy, healing",,,,,,,,
+Calling,Q,Prepare 1d6 holy spears that deal 4 physical damage. These spears can be distributed to any tile on the board. Each successive spear on a tile deals 1 less damage.,1,"projectile, physical, holy, roll",,,,,,,,
+Contagion,Q,Infect an enemy in radius 4 to take 5 dark damage. A tether is extended in all directions that infects the first enemy hit. This continues until no more tethers can be created. All tethers then deal 4 dark damage to both enemies attached.,2,dark,,,,,,,,
+Precariousaurus,Q,"Innate - 3 max spirit, 2 spirit regeneration
+
+Summon (3) - Summon a precariousaurus with 1d20 health. Max 1 precariousaurus.
+
+Walk (1) - Move precariousaurus in radius 1. Precariousaurus consumes X spirit, up to 2, at the end of your turn and attacks all cardinal directions with range 1 at the end of your turn, dealing X times 1d4 physical damage. Precariousaurus gains +1 attack, +1 range, and +1 movement radius for every 10 hp below 50 you are.",1,"physical, aoe, necromancy",,,,,,,,
+Triple Shot,Q,"Fire 3 bolts in any direction. The first two bolts knock enemies back 1 tile and deal 2 physical damage, increased by 2 if they cannot be knocked back. The final bolt knocks enemies back until they hit a wall and deals 5 physical damage. ",2,"projectile, physical",,,,,,,,
+Poisonburst,Q,Spread forward a poison cloud that marks enemies in a quarter circle with radius 2. This ability consumes the mark to deal 7 poison damage and poison for 3. The mark deals 2 poison damage at the beginning and end of the players turn.,2,"poison, aoe, mark",,,,,,,,
+Solstice,Q,"Fire a gust forward, pushing the first enemy hit back 3 tiles. At then end or when the enemy cannot be pushed back further, strike them for 3 lightning damage in radius 2.",1,"wind, lightning, aoe, projectile",,,,,,,,
+Stone Throw,Q,"Throw a stone in any straight line 2 tiles that deals 5 stone damage. If the stone hits an empty tile, jump to the tile and slam the ground for 3 stone damage in radius 1. ",1,"stone, aoe, movement, projectile, melee",,,,,,,,
+Blossom,Q,"Grow 2 plants in radius 3. All plants within radius 3 erupt, dealing 3 terra damage in radius 1. Regenerate 3 health for each enemy hit.",2,"terra, aoe, healing",,,,,,,,
+Blade of Grass,Q,"Choose a tile in radius 3 and grow plants on all corners of that tile. Use your attack twice for 50% damage each time, fully converted to terra damage.",2,"terra, aoe",,,,,,,,
+Overflow,Q,Grow a plant in radius 4. You may choose a different plant in radius 4 and erupt it for 6 terra damage in radius 2.,1,"terra, aoe",,,,,,,,
+,Q,"Lash a vine once in any direction with range 5, dealing 5 terra damage. Range or AOE increases instead apply to the number of lashes. Subsequent lashes deal +2 terra damage, stacking.",1,"terra, aoe",,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+,Q,,1,,,,,,,,,
+Disorient,W,Mark an enemy in range 3. Their next ability has a 50% chance to fail.,2,"mark, dark, roll",1 mark,,,,,,,
+Momentary Vampire,W,"For the rest of your turn, gain +50% lifesteal.",3,"healing, dark",,,,,,,,
+Yank,W,"Stab in any direction 3 tiles, dealing 3 damage and pulling all enemies as close to you as possible.",1,"melee, physical",,,,,,,,
+Unkillable Dummy King,W,"Innate - 4 max spirit, 2 spirit regeneration
+
+Summon (4) - Summon a dummy that cannot be killed or destroyed. Dummy counts as both an ally and an enemy to you. Dealing non-AOE damage to this dummy applies the damage as an AOE in radius 2 around the dummy. Cannot chain to itself. Max 1 dummy.
+
+Move (2): Move the dummy up to 2 tiles in any direction. ",X,necromancy,1 dummy minion,,,,,,,
+Small Little Guys,W,"Innate - 3 max spirit, 2 spirit regeneration
+
+Summon (1) - Summon a small little guy with 1d4 health. Max 6 small little guys.
+
+CHAAARGE! (2) - You may move each small little guy up to 2 tiles in any direction, then they can attack an enemy in radius 1 for 1d4 dark damage. Casting this after the first time in a turn only costs 1 spirit.",X,"necromancy, dark, roll",6 small little guys,,,,,,,
+Final Ascension,W,"This ability starts on cooldown. Base cooldown is decided by 1d6. When not on cooldown, your non-roll base damage values are doubled.",X,"holy, roll",,,,,,,,
+Freezing Spray,W,"Fire a freezing ice shot in all directions with infinite range, dealing 6 ice damage and increasing all ability cooldowns of players hit by 1 if possible.",2,"projectile, ice",,,,,,,,
+Gamble Gamble,W,"Roll a d4, this dice type cannot be changed. If you roll a 1 or 2, reduce your Q, E, and A cooldowns by that much. If you roll a 3 or 4, increase your Q, E, and A cooldowns by that much, minus 2. Reductions can bring a cooldown to 0, and increases can bring a cooldown above its normal cooldown.",1,roll,,,,,,,,
+Suicidal Chiken,W,"Summon a chiken with 1d4 health in radius 2 around yourself. When you use your attack action, if a chiken is in direct line of sight of an enemy, it will jump onto that enemy and explode for 3 fire damage and 2 ignite in radius 1. Max 4 suicidal chikens.",1,"necromancy, fire, dark, aoe",4 chickens,,,,,,,
+Regenerative Shield,W,"Upon taking damage, choose X between 1-5. Reduce incoming damage by 4 times X, then put this ability on X cooldown.",X,"stone, healing",,,,,,,,
+Personal Ambulance,W,"Innate - 4 max spirit, 1 spirit regeneration
+
+Summon (3) - Summon a guardian angel with 1d12 health and +1 advantage on health rolls. When you use your move action, you may move your guardian angel 1 tile. When any non-guardian angel ally takes damage within radius 2 of a guardian angel, there is a 50% chance the damage will be redirected to the guardian angel. On death, guardian angels heal all entities in radius 2 for 6. Max 2 guardian angels.
+
+Heal (3) - A guardian angel heals a chosen entity in radius 2 for 9 health.",X,"healing, necromancy, aoe, holy, roll",1 guardian angel minion,,,,,,,
+Golden Spears,W,Choose either vertical or horizontal. Adjacent columns or rows are hit by a piercing golden spear that deals 9 physical damage. You gain 6 health for each enemy hit.,2,"projectile, physical, holy, healing",,,,,,,,
+Shadow,W,"Mark a tile in range 3. All moves, attacks, and abilities also originate from this tile with half damage. Actions originated from this tile are separate and optional, but cannot include recasts.",3,"mark, dark",1 tile marker,,,,,,,
+Baby Devils,W,"Innate - 5 max spirit, 2 spirit regeneration
+
+Infest (5) - Mark an enemy in radius 2. When the marked enemy begins their turn, the mark is consumed to spawn a baby devil with 1d6 health on all empty adjacent tiles to them. When the marked enemy ends their turn, all baby devils may attack any enemy in range 1 for 1d8 dark damage and disappear.",3,"dark, necromancy, roll, mark","1 mark, 8 baby devils",,,,,,,
+Sanctification,W,"Mark an enemy in radius 1. They have -1 advantage, and when they take any action, they first take 1d4 fire damage. On a 1, consume the mark to deal 3 fire damage. On a 4, apply 3 ignite. If they have disadvantage, you choose which roll they must choose.",3,"holy, mark, roll, fire",1 mark,,,,,,,
+Stand Still,W,Consume a defense token to regenerate 30% of your maximum health.,2,"stone, healing",,,,,,,,
+Ice Traps,W,"Mark any unoccupied tile on the board. You may have up to 8 ice traps out at a time, and this number cannot be changed. Enemies that move or start their turn over this trap immediately stop, are unable to move for the rest of their turn, are dealt 5 ice damage, and any attacks and abilities used gain +1 cooldown temporarily. ",1,"ice, mark",,,,,,,,
+Buildup,W,"Gain +50% lightning and wind damage for each level of cooldown currently on this ability. Dash in any straight line 6 tiles, decreased by X where X is the chosen cooldown, between 1 and 4.",1,"wind, lightning, movement",,,,,,,,
+,W,"Consume poison from all enemies in radius 4. Deal 2 poison damage in radius 4, increased by 2 per stack of poison consumed. Heal for 50% of damage dealt.",4,"poison, aoe, healing",,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
+,W,,1,,,,,,,,,
