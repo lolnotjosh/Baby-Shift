@@ -1,14 +1,30 @@
+'''
+Feel free to mess around with the code here, all of it is preliminary and half of it doesn't work yet. I have to find a way
+to be able to view PDFs in VSCode (they aren't naturally supported), but most of this stuff is good.
+'''
+
+
+### general ###
+
 import pandas as pd
 import pdfkit
 import os
 import numpy as np
 
+### pdf specs ###
+
 from reportlab.pdfgen import canvas
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
-from reportlab.pdfbase.pdfmetrics import stringWidth
+
+### text specs ###
+
 from reportlab.lib.colors import black, white
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase.pdfmetrics import stringWidth
+
 
 class System():
     def __init__(self):
@@ -26,12 +42,17 @@ class System():
         self.cardPixW = self.cardW * self.dpi
         self.cardPixH = self.cardH * self.dpi
 
+        ### defining bounds for cards for easier processing ###
+
         self.leftmost = (self.pdfPixW - self.cardPixW * 3) // 2
         self.rightmost = self.pdfPixW - self.leftmost
         self.topmost = (self.pdfPixH - self.cardPixH * 3) // 2
         self.botmost = self.pdfPixH - self.topmost
 
         ### setting font specs ###
+
+        font_path = 'Chakra_Petch_Font_Family/Chakra Petch Regular 400.ttf'
+        pdfmetrics.registerFont(TTFont('Chakra Petch', font_path))
 
         self.font = 'Chakra Petch'
 
@@ -51,6 +72,11 @@ class Page():
         self.pdf = canvas.Canvas(fileName, letter)
     
 
+    def build(self):
+        self.drawCardGrid()
+        self.drawCards()
+
+
     def drawCardGrid(self):
         for i in range(4):
             self.pdf.line(system.leftmost, system.topmost + system.cardPixH * i, system.rightmost, system.topmost + system.cardPixH * i)
@@ -63,11 +89,11 @@ class Page():
             cardTop = 0.5 * system.topmost + system.cardPixH * (3 - (i % 3))
 
             if self.pageType == 'ability':
-                cardName = self.df['Name']
-                cardSlot = self.df['Slot']
-                cardDescription = self.df['Description']
-                cardCD = self.df['CD']
-                cardTags = self.df['Tags']
+                cardName = self.df['Name'].iloc[i]
+                cardSlot = self.df['Slot'].iloc[i]
+                cardDescription = self.df['Description'].iloc[i]
+                cardCD = self.df['CD'].iloc[i]
+                cardTags = self.df['Tags'].iloc[i]
 
             card = Card(self.pageType, cardLeft, cardTop)
             card.buildCard([cardName, cardSlot, cardDescription, cardCD, cardTags])
@@ -161,7 +187,7 @@ class Card():
 
 
     def cd(self, cardCD):
-        cdWidth = stringWidth(system.font, system.cdFontSize)
+        cdWidth = stringWidth(cardCD, system.font, system.cdFontSize)
 
         cdX = self.x + int((7 / 8) * system.cardPixW)
         cdY = self.y - 0.82 * system.cardPixH
@@ -179,12 +205,17 @@ class Card():
 
 
     def tags(self, cardTags):
+        cardTags = cardTags.split(', ')
+
         for i, tag in enumerate(cardTags):
-            tagWidth = system.cardPixW // 12
+            tagWidth = system.cardPixW // 12 # with current setup, tagWidth = 13.0
             page.pdf.drawImage(f'symbols/{tag}_icon.png', self.x, self.y - tagWidth * i, width=tagWidth, height=tagWidth)
 
 
     def necro(self):
+
+        ### separate handling for necromancy cards ###
+
         pass
 
 
@@ -205,6 +236,6 @@ if __name__ == '__main__':
         if i % 9 == 0:
             page_df = cut_df[i : i + 9]
             page = Page(page_df, i // 9, 'ability')
+            page.build()
             page.savePDF()
-
             
