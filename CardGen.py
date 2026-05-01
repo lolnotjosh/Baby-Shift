@@ -10,7 +10,7 @@ from reportlab.lib.units import inch
 from reportlab.pdfbase.pdfmetrics import stringWidth
 from reportlab.lib.colors import black, white
 
-class System(self):
+class System():
     def __init__(self):
 
         ### seting pdf and card size specs ###
@@ -19,17 +19,17 @@ class System(self):
         self.pdfH = 11
         self.pdfPixW, self.pdfPixH = letter
 
-        self.dpi = pdfPixW // pdfW
+        self.dpi = self.pdfPixW // self.pdfW
 
         self.cardW = 2.25
         self.cardH = 3.25
-        self.cardPixW = cardW * self.dpi
-        self.cardPixH = cardH * self.dpi
+        self.cardPixW = self.cardW * self.dpi
+        self.cardPixH = self.cardH * self.dpi
 
         self.leftmost = (self.pdfPixW - self.cardPixW * 3) // 2
         self.rightmost = self.pdfPixW - self.leftmost
         self.topmost = (self.pdfPixH - self.cardPixH * 3) // 2
-        self.botmost = self.pdfPixH - self.botmost
+        self.botmost = self.pdfPixH - self.topmost
 
         ### setting font specs ###
 
@@ -41,9 +41,11 @@ class System(self):
         self.cdFontSize = 20
 
 
-class Page(self):
-    def __init__(self, df, ind):
+class Page():
+    def __init__(self, df, ind, pageType):
         self.df = df
+        self.ind = ind
+        self.pageType = pageType
 
         fileName = f'Card_Sheet_{ind}.pdf'
         self.pdf = canvas.Canvas(fileName, letter)
@@ -52,17 +54,144 @@ class Page(self):
     def drawCardGrid(self):
         for i in range(4):
             self.pdf.line(system.leftmost, system.topmost + system.cardPixH * i, system.rightmost, system.topmost + system.cardPixH * i)
-            self.pdf.line(system.leftmost + system.cardPixW * i, system.topmost, system.leftmost + system.cardPixW * i, system/botmost)
+            self.pdf.line(system.leftmost + system.cardPixW * i, system.topmost, system.leftmost + system.cardPixW * i, system.botmost)
 
 
-class Card(self):
-    def __init__(self):
+    def drawCards(self):
+        for i in range(self.ind * 9, self.ind * 9 + 9):
+            cardLeft = system.leftmost + system.cardPixW * (i // 3)
+            cardTop = 0.5 * system.topmost + system.cardPixH * (3 - (i % 3))
+
+            if self.pageType == 'ability':
+                cardName = self.df['Name']
+                cardSlot = self.df['Slot']
+                cardDescription = self.df['Description']
+                cardCD = self.df['CD']
+                cardTags = self.df['Tags']
+
+            card = Card(self.pageType, cardLeft, cardTop)
+            card.buildCard([cardName, cardSlot, cardDescription, cardCD, cardTags])
+    
+    
+    def savePDF(self):
+        self.pdf.save()
+
+
+class Card():
+    def __init__(self, cardType, x, y):
+        self.cardType = cardType
+
+        self.x = x
+        self.y = y
+
+
+    def buildCard(self, specs, isNecro=False):
+        cardName, cardSlot, cardDescription, cardCD, cardTags = specs
+
+        if self.cardType == 'ability':
+            self.name(cardName)
+            self.slot(cardSlot)
+
+            if not isNecro:
+                self.description(cardDescription)
+                self.cd(cardCD)
+            else:
+                self.necro()
+
+            self.tags(cardTags)
+
+
+    def name(self, cardName):
+        nameWidth = stringWidth(cardName, system.font, system.nameFontSize)
+        scale = 100
+
+        if nameWidth > 0.85 * system.cardPixW:
+            scale = 0.85 * system.cardPixW * 100 / nameWidth
+
+        nameObj = page.pdf.beginText()
+        nameObj.setFont(system.font, system.nameFontSize)
+        nameObj.setTextOrigin(self.x + 0.5 * (system.cardPixW - nameWidth * scale / 100), self.y)
+        nameObj.setHorizScale(scale)
+        nameObj.textOut(cardName)
+
+        page.pdf.drawText(nameObj)
+    
+
+    def slot(self, cardSlot):
+        slotWidth = stringWidth(cardSlot, system.font, system.slotFontSize)
+
+        slotX = self.x + system.cardPixW // 8
+        slotY = self.y - 0.82 * system.cardPixH
+
+        slotObj = page.pdf.beginText()
+        slotObj.setFont(system.font, system.slotFontSize)
+        slotObj.setTextOrigin(slotX - 0.5 * slotWidth, slotY - 0.5 * slotWidth)
+        slotObj.setHorizScale(100)
+        slotObj.textOut(cardSlot)
+
+        page.pdf.setFillColor(white)
+        page.pdf.circle(slotX, slotY, system.cardPixW // 12, fill=1)
+        page.pdf.setFillColor(black)
+        page.pdf.drawText(slotObj)
+
+
+    def description(self, cardDescription):
+        descriptionObj = page.pdf.beginText()
+        descriptionObj.setFont(system.font, system.descriptionFontSize)
+        descriptionObj.setTextOrigin(self.x + 0.25 * system.cardPixW, self.y - 0.1 * system.cardPixH)
+        descriptionObj.setHorizScale(100)
+
+        lines = []
+        line = ''
+
+        for word in cardDescription:
+            if line == '':
+                line = word
+            elif stringWidth(f'{line} {word}', system.font, system.descriptionFontSize) > 0.7 * system.cardPixW:
+                lines.append(line)
+                line = word
+            else:
+                line += f' {word}'
+        lines.append(line)
+
+        for line in lines:
+            descriptionObj.textLine(line)
+
+        page.pdf.drawText(descriptionObj)
+
+
+    def cd(self, cardCD):
+        cdWidth = stringWidth(system.font, system.cdFontSize)
+
+        cdX = self.x + int((7 / 8) * system.cardPixW)
+        cdY = self.y - 0.82 * system.cardPixH
+
+        cdObj = page.pdf.beginText()
+        cdObj.setFont(system.font, system.cdFontSize)
+        cdObj.setTextOrigin(cdX - 0.5 * cdWidth, cdY - 0.5 * cdWidth)
+        cdObj.setHorizScale(100)
+        cdObj.textOut(cardCD)
+
+        page.pdf.setFillColor(white)
+        page.pdf.circle(cdX, cdY, system.cardPixW // 12, fill=1)
+        page.pdf.setFillColor(black)
+        page.pdf.drawText(cdObj)
+
+
+    def tags(self, cardTags):
+        for i, tag in enumerate(cardTags):
+            tagWidth = system.cardPixW // 12
+            page.pdf.drawImage(f'symbols/{tag}_icon.png', self.x, self.y - tagWidth * i, width=tagWidth, height=tagWidth)
+
+
+    def necro(self):
         pass
+
 
 if __name__ == '__main__':
     system = System()
 
-    path = ''
+    path = 'abilities.csv'
     df = pd.read_csv(path)
     cut_df = df[['Name', 'Slot', 'Description', 'CD', 'Tags']].copy()
 
@@ -75,6 +204,7 @@ if __name__ == '__main__':
     for i, card in enumerate(cut_df['Name']):
         if i % 9 == 0:
             page_df = cut_df[i : i + 9]
-            Page(page_df, i // 9)
+            page = Page(page_df, i // 9, 'ability')
+            page.savePDF()
 
             
